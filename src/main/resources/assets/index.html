@@ -1,21 +1,22 @@
 <!DOCTYPE HTML>
-<html ng-app='roboRallyGame'>
-	<head>
-		<title>Robo Rally</title>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				background-color: #FFFFFF;
-			}
-		</style>
-		<script src="js/angular.min.js"></script>
-                <script src="js/angular-route.min.js"></script>
-                <script src="js/controllers.js"></script>
-		<script src="js/pixi.js"></script>
-	</head>
-        <body>
-            <div ng-view></div>
+<html ng-app='carcassonneGame'>
+    <head>
+        <title>Carcassonne</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #FFFFFF;
+            }
+        </style>
+        <script src="js/pixi.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/directives.js"></script>
+    </head>
+    <body>
+        <div ng-view></div>
 
     </body>
 </html>

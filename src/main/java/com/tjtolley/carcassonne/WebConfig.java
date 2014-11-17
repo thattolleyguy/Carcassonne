@@ -1,4 +1,4 @@
-package com.tjtolley.roborally;
+package com.tjtolley.carcassonne;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;

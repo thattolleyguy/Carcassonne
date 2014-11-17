@@ -1,4 +1,4 @@
-package com.tjtolley.roborally;
+package com.tjtolley.carcassonne;
 
 import com.codahale.metrics.health.HealthCheck;
 

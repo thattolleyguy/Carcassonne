@@ -18,6 +18,7 @@ public class Game
 {
     private final Table<Integer, Integer, Tile> map;
     
+    
     private final String name;
     private final UUID id;
     List<Player> players;

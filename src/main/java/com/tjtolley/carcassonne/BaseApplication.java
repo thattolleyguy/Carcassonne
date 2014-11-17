@@ -1,4 +1,4 @@
-package com.tjtolley.roborally;
+package com.tjtolley.carcassonne;
 
 import com.google.inject.AbstractModule;
 import com.hubspot.dropwizard.guice.GuiceBundle;
@@ -30,7 +30,7 @@ public class BaseApplication extends Application<WebConfig>
 				.setConfigClass(WebConfig.class)
 				.build();
 		bootstrap.addBundle(guiceBundle);
-		bootstrap.addBundle(new AssetsBundle("/assets","/RoboRally"));
+		bootstrap.addBundle(new AssetsBundle("/assets","/Carcassonne"));
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class BaseApplication extends Application<WebConfig>
 	{
 		final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
 		environment.healthChecks().register("template", healthCheck);
-		environment.jersey().packages("com.tjtolley.roborally.resources");
+		environment.jersey().packages("com.tjtolley.carcassonne.resources");
 	}
 
 	private static class GuiceModule extends AbstractModule
