@@ -5,8 +5,9 @@
  */
 package com.tjtolley.carcassonne.game;
 
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Table;
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,23 +17,23 @@ import java.util.UUID;
  */
 public class Game
 {
-    private final Table<Integer, Integer, Tile> map;
-    
-    
+    private final Table<Integer, Integer, PlacedTile> map;
+    private final List<PlacedTile> placedTiles;
+    private final List<Position> placeableLocations;
     private final String name;
     private final UUID id;
     List<Player> players;
     int currentRound = 0;
 
-    public Game(Table<Integer, Integer, Tile> map, String name, UUID id,  List<Player> players)
+    public Game(String name, UUID id, List<Player> players)
     {
-        this.map = map;
+        this.map = HashBasedTable.create();
         this.name = name;
         this.id = id;
         this.players = players;
+        this.placedTiles = Lists.newArrayList();
+        this.placeableLocations = Lists.newArrayList();
     }
-
-
 
     public String getName()
     {
@@ -42,6 +43,23 @@ public class Game
     public UUID getId()
     {
         return id;
+    }
+
+    public void placeTile(TileDefinition tile, Position location)
+    {
+        if (!placeableLocations.contains(location)) {
+            throw new IllegalArgumentException("Invalid location for tile");
+        }
+        // Add surrounding locations to placeable locations 
+        if(!map.contains(location.x-1, location.y))
+            placeableLocations.add(new Position(location.x-1, location.y));
+        if(!map.contains(location.x+1, location.y))
+            placeableLocations.add(new Position(location.x+1, location.y));
+        if(!map.contains(location.x, location.y-1))
+            placeableLocations.add(new Position(location.x, location.y-1));
+        if(!map.contains(location.x, location.y+1))
+            placeableLocations.add(new Position(location.x, location.y+1));
+        
     }
 
 }

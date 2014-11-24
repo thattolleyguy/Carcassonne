@@ -2,9 +2,10 @@ package com.tjtolley.carcassonne.game;
 
 import java.util.List;
 
-public class Tile
+public class PlacedTile
 {
 	List<Feature> features;
+    
 
 
 

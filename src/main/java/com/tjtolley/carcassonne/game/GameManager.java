@@ -5,6 +5,7 @@
  */
 package com.tjtolley.carcassonne.game;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import java.io.IOException;
 import java.util.Collection;
@@ -31,17 +32,10 @@ public class GameManager
         return gameMap.values();
     }
 
-//    public UUID createGame(Map<String, Object> gameSettings)
-//    {
-//        UUID gameId = UUID.randomUUID();
-//        try {
-//            //        configuration = BoardConfiguration.randomConfiguration(name, width, height);
-//            Map<String, Object> courseMap = (Map<String, Object>) gameSettings.get("course");
-//            gameMap.put(gameId, new Game((String) gameSettings.get("name"), gameId));
-//        }
-//        catch (IOException ex) {
-//            Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return gameId;
-//    }
+    public UUID createGame(Map<String, Object> gameSettings)
+    {
+        UUID gameId = UUID.randomUUID();
+        gameMap.put(gameId, new Game((String) gameSettings.get("name"), gameId, Lists.<Player>newArrayList()));
+        return gameId;
+    }
 }

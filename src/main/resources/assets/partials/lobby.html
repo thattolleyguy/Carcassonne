@@ -1,5 +1,7 @@
 <div>
+    <input type="text" name="gameName" value="Enter name of game" />
+    <button ng-click="newGame">New Game</button>
     <ul>
-        <li ng-repeat="game in games"><a href='/RoboRally/index.html#/game/{{game.id}}'>{{game.name}}</a></li>
+        <li ng-repeat="game in games"><a href='/Carcassonne/index.html#/game/{{game.id}}'>{{game.name}}</a></li>
     </ul>
 </div>

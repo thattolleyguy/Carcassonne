@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.tjtolley.carcassonne.game.Game;
 import com.tjtolley.carcassonne.game.GameManager;
+import java.io.IOException;
+import java.net.URI;
 import java.util.Collection;
+import java.util.Map;
 import java.util.UUID;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -44,15 +47,14 @@ public class GameResource
     @POST
     public Response createGame(String payload)
     {
-//        try {
-//            Map<String, Object> gameSettings = mapper.readValue(payload, Map.class);
-//            
-//            return Response.created(URI.create("/" + gameManager.createGame(gameSettings))).build();
-//        }
-//        catch (IOException ex) {
-//            log.error("Error creating game from settings");
-        return Response.serverError().build();
-//        }
+        try {
+            Map<String, Object> gameSettings = mapper.readValue(payload, Map.class);
+            return Response.created(URI.create("/" + gameManager.createGame(gameSettings))).build();
+        }
+        catch (IOException ex) {
+            log.error("Error creating game from settings");
+            return Response.serverError().build();
+        }
     }
 
     @GET
