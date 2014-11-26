@@ -5,14 +5,10 @@
  */
 package com.tjtolley.carcassonne.game;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -35,7 +31,7 @@ public class GameManager
     public UUID createGame(Map<String, Object> gameSettings)
     {
         UUID gameId = UUID.randomUUID();
-        gameMap.put(gameId, new Game((String) gameSettings.get("name"), gameId, Lists.<Player>newArrayList()));
+        gameMap.put(gameId, new Game((String) gameSettings.get("name"), gameId));
         return gameId;
     }
 }

@@ -24,10 +24,10 @@ function LobbyCtrl($scope, $http)
         console.log(data)
         $scope.games = data;
     });
-    $scope.newGame=function()
+    $scope.newGame = function ()
     {
         console.log('new game');
-        $http.post('/game',{'name':'game'});
+        $http.post('/game', {'name': 'game'});
     }
 }
 
@@ -35,128 +35,199 @@ function LobbyCtrl($scope, $http)
 
 function GameCtrl($scope, $http, $routeParams)
 {
-    var board = new PIXI.DisplayObjectContainer();
     $http.get('/game/' + $routeParams.gameId).success(function (data) {
         console.log(data);
         $scope.game = data;
-        data.board.forEach(function (value)
-        {
-            value.forEach(function (tile) {
-
-                var sprite = new PIXI.Sprite(PIXI.Texture.fromImage("images/" + tile.tileType + ".png"));
-                sprite.anchor.x = 0.5;
-                sprite.anchor.y = 0.5;
-                sprite.position.x = (tile.x * 150) + 75;
-                sprite.position.y = (tile.y * 150) + 75;
-                switch (tile.rotation)
-                {
-                    case 'WEST':
-                        sprite.rotation = -Math.PI / 2;
-                        break;
-                    case 'EAST':
-                        sprite.rotation = Math.PI / 2;
-                        break;
-                    case 'SOUTH':
-                        sprite.rotation = Math.PI;
-                        break;
-
-                }
-                board.addChild(sprite)
-
-                if (tile.northEdge !== 'EMPTY')
-                {
-                    var edgeSprite = new PIXI.Sprite(PIXI.Texture.fromImage("images/" + tile.northEdge + ".png"));
-                    edgeSprite.anchor.x = 0.5;
-                    edgeSprite.anchor.y = 0.5;
-                    edgeSprite.position.x = (tile.x * 150) + 75;
-                    edgeSprite.position.y = (tile.y * 150) + 75;
-
-                    board.addChild(edgeSprite)
-                }
-                if (tile.southEdge !== 'EMPTY')
-                {
-                    var edgeSprite = new PIXI.Sprite(PIXI.Texture.fromImage("images/" + tile.southEdge + ".png"));
-                    edgeSprite.anchor.x = 0.5;
-                    edgeSprite.anchor.y = 0.5;
-                    edgeSprite.position.x = (tile.x * 150) + 75;
-                    edgeSprite.position.y = (tile.y * 150) + 75;
-                    edgeSprite.rotation = Math.PI;
-
-                    board.addChild(edgeSprite)
-                }
-                if (tile.westEdge !== 'EMPTY')
-                {
-                    var edgeSprite = new PIXI.Sprite(PIXI.Texture.fromImage("images/" + tile.westEdge + ".png"));
-                    edgeSprite.anchor.x = 0.5;
-                    edgeSprite.anchor.y = 0.5;
-                    edgeSprite.position.x = (tile.x * 150) + 75;
-                    edgeSprite.position.y = (tile.y * 150) + 75;
-                    edgeSprite.rotation = -Math.PI / 2;
-
-                    board.addChild(edgeSprite)
-                }
-                if (tile.eastEdge !== 'EMPTY')
-                {
-                    var edgeSprite = new PIXI.Sprite(PIXI.Texture.fromImage("images/" + tile.eastEdge + ".png"));
-                    edgeSprite.anchor.x = 0.5;
-                    edgeSprite.anchor.y = 0.5;
-                    edgeSprite.position.x = (tile.x * 150) + 75;
-                    edgeSprite.position.y = (tile.y * 150) + 75;
-                    edgeSprite.rotation = Math.PI / 2;
-
-                    board.addChild(edgeSprite)
-                }
-
-
-            })
-            board.pivot.x = board.width / 2;
-            board.pivot.y = board.height / 2;
-            board.position.x = .5 * board.width / 2;
-            board.position.y = .5 * board.height / 2;
-//			board.rotation = -Math.PI / 2;
-
-        })
         board.scale.x = 0.5;
         board.scale.y = 0.5;
         stage.addChild(board);
     });
 
 
-    var stage = new PIXI.Stage(0x000000);
-    var renderer = PIXI.autoDetectRenderer(1920, 1080);
+    $scope.initialize = function (stage)
+    {
 
-    document.getElementById('game').appendChild(renderer.view);
+        var assetsToLoader = ["images/baseTileSetSpriteSheet.json"]
+        var loader = new PIXI.AssetLoader(assetsToLoader);
+//        loader.onComplete = onAssetsLoaded;
+        loader.load();
 
-    requestAnimFrame(animate);
+        var tiles = [];
+        var tileFrames = ["A.png", "B.png", "C.png", "D.png", "E.png", "F.png", "G.png", "H.png", "I.png", "J.png", "K.png", "L.png", "M.png", "N.png", "O.png", "P.png", "Q.png", "R.png", "S.png", "T.png", "U.png", "V.png", "W.png", "X.png"];
 
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(stage);
+
+//        function onAssetsLoaded()
+//        {
+//            for (var row = 0; row < 6; row++)
+//            {
+//                for (var col = 0; col < 4; col++)
+//                {
+//                    var frameName = tileFrames[(row * 6) + col];
+//                    var tile = PIXI.Sprite.fromFrame(frameName);
+//                    tile.position.x = row * 175 + 87;
+//                    tile.position.y = col * 175 + 87;
+//                    tile.anchor.x = 0.5;
+//                    tile.anchor.y = 0.5;
+//                    tiles.push(tile);
+//                    stage.addChild(tile);
+//
+//                }
+//            }
+//        }
+
+
+        stage.click = function (data) {
+            $scope.x = data.global.x;
+            $scope.y = data.global.y;
+            var tileFrame = Math.floor(Math.random() * 24);
+
+
+            var edgeSprite = PIXI.Sprite.fromFrame(tileFrames[tileFrame]);
+            edgeSprite.anchor.x = 0.5;
+            edgeSprite.anchor.y = 0.5;
+            edgeSprite.position.x = Math.floor(data.global.x / 175) * 175 + 88;
+            edgeSprite.position.y = Math.floor(data.global.y / 175) * 175 + 88;
+            edgeSprite.rotation = Math.PI / 2;
+            edgeSprite.setInteractive(true);
+            edgeSprite.click = function (data) {
+                edgeSprite.rotation += Math.PI / 2;
+            }
+
+            $scope.stage.addChild(edgeSprite);
+            console.log(data);
+        }
+
+
+        var stageWidth = $scope.width;
+        var stageHeight = $scope.height;
+        var tileDim = 175;
+        var vertLines = stageWidth / tileDim;
+        var horLines = stageHeight / tileDim;
+        var graphics = new PIXI.Graphics();
+        graphics.beginFill(0xFFFFFF);
+        graphics.lineStyle(1, 0xFFFFFF, 1.0);
+        for (var i = 1; i <= vertLines; i++)
+        {
+            graphics.moveTo(i * tileDim, 0);
+            graphics.lineTo(i * tileDim, stageHeight);
+        }
+        for (var i = 1; i <= horLines; i++)
+        {
+            graphics.moveTo(0, i * tileDim);
+            graphics.lineTo(stageWidth, i * tileDim);
+        }
+        graphics.endFill();
+        stage.addChild(graphics);
+
     }
 }
 function SandboxCtrl($scope, $http, $routeParams)
 {
     $scope.x = 0.0;
     $scope.y = 0.0;
-    $scope.click = function (data) {
-        $scope.x = data.global.x;
-        $scope.y = data.global.y;
-        var tileX = Math.floor(Math.random() * 6);
-        var tileY = Math.floor(Math.random() * 4);
 
 
-        var edgeSprite = new PIXI.Sprite(new PIXI.Texture(PIXI.Texture.fromImage("images/BaseTileSet.png"), new PIXI.Rectangle(tileX * 180, tileY * 180, 175, 175)));
-        edgeSprite.anchor.x = 0.5;
-        edgeSprite.anchor.y = 0.5;
-        edgeSprite.position.x = data.global.x;
-        edgeSprite.position.y = data.global.y;
-        edgeSprite.rotation = Math.PI / 2;
-        edgeSprite.setInteractive(true);
-        edgeSprite.click = function (data) {
-            edgeSprite.rotation += Math.PI / 2;
+
+    function refreshBoard()
+    {
+        $http.get('/sandbox').success(function (data) {
+            if ($scope.stage.children.length > 0)
+                $scope.stage.removeChildren();
+            for (var i in data.placedTiles)
+            {
+                var tileInfo = data.placedTiles[i];
+                var tileSprite = PIXI.Sprite.fromFrame(tileInfo.tileName);
+                tileSprite.anchor.x = 0.5;
+                tileSprite.anchor.y = 0.5;
+                tileSprite.position.x = tileInfo.position.x * 175 + 88;
+                tileSprite.position.y = tileInfo.position.y * 175 + 88;
+                tileSprite.setInteractive(true);
+                tileSprite.click = function (data) {
+                    this.rotation += Math.PI / 2;
+                }
+
+                $scope.stage.addChild(tileSprite);
+            }
+            for (var i in data.placeableLocations)
+            {
+                var position = data.placeableLocations[i];
+                var edgeSprite = new PIXI.Sprite(new PIXI.Texture(PIXI.Texture.fromImage("images/PlaceableTile.png")));
+                edgeSprite.anchor.x = 0.5;
+                edgeSprite.anchor.y = 0.5;
+                edgeSprite.position.x = position.x * 175 + 88;
+                edgeSprite.position.y = position.y * 175 + 88;
+                edgeSprite.setInteractive(true);
+                edgeSprite.click = function (data) {
+                    var tileFrame = Math.floor(Math.random() * 24);
+                    var content = 'tileName=' + $scope.tileFrames[tileFrame] + '&x=' + Math.floor(data.global.x / 175) + '&y=' + Math.floor(data.global.y / 175);
+                    $http.post('/sandbox/placeTile', JSON.stringify({tileName: $scope.tileFrames[tileFrame], x: Math.floor(data.global.x / 175), y: Math.floor(data.global.y / 175)})).success(refreshBoard);
+
+                    console.log(data);
+                }
+                edgeSprite.touchstart = edgeSprite.click;
+
+                $scope.stage.addChild(edgeSprite);
+
+            }
+            console.log(data);
+        });
+    }
+
+    $scope.initialize = function (stage)
+    {
+        var assetsToLoader = ["images/baseTileSetSpriteSheet.json"]
+        var loader = new PIXI.AssetLoader(assetsToLoader);
+//      loader.onComplete = onAssetsLoaded;
+        loader.load();
+
+        var tiles = [];
+        $scope.tileFrames = ["A.png", "B.png", "C.png", "D.png", "E.png", "F.png", "G.png", "H.png", "I.png", "J.png", "K.png", "L.png", "M.png", "N.png", "O.png", "P.png", "Q.png", "R.png", "S.png", "T.png", "U.png", "V.png", "W.png", "X.png"];
+
+//        function onAssetsLoaded()
+//        {
+//            for (var row = 0; row < 6; row++)
+//            {
+//                for (var col = 0; col < 4; col++)
+//                {
+//                    var frameName = tileFrames[(row * 6) + col];
+//                    var tile = PIXI.Sprite.fromFrame(frameName);
+//                    tile.position.x = row * 175 + 87;
+//                    tile.position.y = col * 175 + 87;
+//                    tile.anchor.x = 0.5;
+//                    tile.anchor.y = 0.5;
+//                    tiles.push(tile);
+//                    stage.addChild(tile);
+//
+//                }
+//            }
+//        }
+
+
+
+//        stage.click = click;
+//        stage.touchstart = click;
+
+        var stageWidth = $scope.width;
+        var stageHeight = $scope.height;
+        var tileDim = 175;
+        var vertLines = stageWidth / tileDim;
+        var horLines = stageHeight / tileDim;
+        var graphics = new PIXI.Graphics();
+        graphics.beginFill(0xFFFFFF);
+        graphics.lineStyle(1, 0xFFFFFF, 1.0);
+        for (var i = 1; i <= vertLines; i++)
+        {
+            graphics.moveTo(i * tileDim, 0);
+            graphics.lineTo(i * tileDim, stageHeight);
         }
+        for (var i = 1; i <= horLines; i++)
+        {
+            graphics.moveTo(0, i * tileDim);
+            graphics.lineTo(stageWidth, i * tileDim);
+        }
+        graphics.endFill();
+        stage.addChild(graphics);
+        refreshBoard();
+    }
 
-        $scope.stage.addChild(edgeSprite);
-        console.log(data);
-    };
 }

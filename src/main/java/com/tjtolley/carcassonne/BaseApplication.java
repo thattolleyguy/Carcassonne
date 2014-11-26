@@ -19,7 +19,7 @@ public class BaseApplication extends Application<WebConfig>
 	@Override
 	public String getName()
 	{
-		return "RoboRally";
+		return "Carcassonne";
 	}
 
 	@Override

@@ -5,7 +5,7 @@ angular.module('carcassonneGame')
             return {
                 // template: '<canvas></canvas>',
                 restrict: 'A',
-                scope: false,
+                transclude:true,
                 controller: function postLink($scope, $element, $attrs) {
 
                     var self = this,
@@ -59,7 +59,7 @@ angular.module('carcassonneGame')
                         self.render();
                         requestAnimFrame(renderLoop);
                     }
-
+                    
                     requestAnimFrame(renderLoop);
 
                     this.getStage = function () {
@@ -73,43 +73,8 @@ angular.module('carcassonneGame')
                     this.getContext = function () {
                         return renderer.gl ? renderer.gl : renderer.context;
                     };
-                    var board = new PIXI.DisplayObjectContainer();
-                    board.setInteractive(true);
-                    board.width = 1920;
-                    board.height = 1080;
-                    board.position.x = .5 * board.width / 2;
-                    board.position.y = .5 * board.height / 2;
-                    stage.click = function (data)
-                    {
-                        $scope.click(data);
-                    }
-                    stage.addChild(board);
-
-                    // $($window).resize(function() {
-                    //     renderer.resize(element.width(), element.height())                
-                    // })
-
-                    var stageWidth = $scope.width;
-                    var stageHeight = $scope.height;
-                    var tileDim = 175;
-                    var vertLines = stageWidth / tileDim;
-                    var horLines = stageHeight / tileDim;
-                    var graphics = new PIXI.Graphics();
-                    graphics.beginFill(0xFFFFFF);
-                    graphics.lineStyle(1, 0xFFFFFF, 1.0);
-                    for (var i = 1; i <= vertLines; i++)
-                    {
-                        graphics.moveTo(i * tileDim, 0);
-                        graphics.lineTo(i * tileDim, stageHeight);
-                    }
-                    for (var i = 1; i <= horLines; i++)
-                    {
-                        graphics.moveTo(0, i * tileDim);
-                        graphics.lineTo(stageWidth, i * tileDim);
-                    }
-                    graphics.endFill();
-                    stage.addChild(graphics);
-
+                    
+                    $scope.initialize(stage);
                 }
             };
         });
