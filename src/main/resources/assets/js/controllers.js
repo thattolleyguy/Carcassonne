@@ -123,30 +123,25 @@ function GameCtrl($scope, $http, $routeParams)
 }
 function SandboxCtrl($scope, $http, $routeParams)
 {
-    $scope.x = 0.0;
-    $scope.y = 0.0;
-
-
-
     function refreshBoard()
     {
         $http.get('/sandbox').success(function (data) {
-            if ($scope.stage.children.length > 0)
-                $scope.stage.removeChildren();
+            if ($scope.board.children.length > 0)
+                $scope.board.removeChildren();
             for (var i in data.placedTiles)
             {
                 var tileInfo = data.placedTiles[i];
                 var tileSprite = PIXI.Sprite.fromFrame(tileInfo.tileName);
                 tileSprite.anchor.x = 0.5;
                 tileSprite.anchor.y = 0.5;
-                tileSprite.position.x = tileInfo.position.x * 175 + 88;
-                tileSprite.position.y = tileInfo.position.y * 175 + 88;
+                tileSprite.position.x = tileInfo.position.x * 175 + 88 + $scope.xOffset;
+                tileSprite.position.y = tileInfo.position.y * 175 + 88 + $scope.yOffset;
                 tileSprite.setInteractive(true);
                 tileSprite.click = function (data) {
                     this.rotation += Math.PI / 2;
                 }
 
-                $scope.stage.addChild(tileSprite);
+                $scope.board.addChild(tileSprite);
             }
             for (var i in data.placeableLocations)
             {
@@ -154,19 +149,22 @@ function SandboxCtrl($scope, $http, $routeParams)
                 var edgeSprite = new PIXI.Sprite(new PIXI.Texture(PIXI.Texture.fromImage("images/PlaceableTile.png")));
                 edgeSprite.anchor.x = 0.5;
                 edgeSprite.anchor.y = 0.5;
-                edgeSprite.position.x = position.x * 175 + 88;
-                edgeSprite.position.y = position.y * 175 + 88;
+                edgeSprite.position.x = position.x * 175 + 88 + $scope.xOffset;
+                edgeSprite.position.y = position.y * 175 + 88 + $scope.yOffset;
                 edgeSprite.setInteractive(true);
                 edgeSprite.click = function (data) {
                     var tileFrame = Math.floor(Math.random() * 24);
-                    var content = 'tileName=' + $scope.tileFrames[tileFrame] + '&x=' + Math.floor(data.global.x / 175) + '&y=' + Math.floor(data.global.y / 175);
-                    $http.post('/sandbox/placeTile', JSON.stringify({tileName: $scope.tileFrames[tileFrame], x: Math.floor(data.global.x / 175), y: Math.floor(data.global.y / 175)})).success(refreshBoard);
+                    var content = {};
+                    content.tileName = $scope.tileFrames[tileFrame];
+                    content.x = Math.floor((data.global.x - $scope.boardOffset.x) / 175);
+                    content.y = Math.floor((data.global.y - $scope.boardOffset.y) / 175);
+                    $http.post('/sandbox/placeTile', JSON.stringify(content)).success(refreshBoard);
 
                     console.log(data);
                 }
                 edgeSprite.touchstart = edgeSprite.click;
 
-                $scope.stage.addChild(edgeSprite);
+                $scope.board.addChild(edgeSprite);
 
             }
             console.log(data);
@@ -177,57 +175,54 @@ function SandboxCtrl($scope, $http, $routeParams)
     {
         var assetsToLoader = ["images/baseTileSetSpriteSheet.json"]
         var loader = new PIXI.AssetLoader(assetsToLoader);
-//      loader.onComplete = onAssetsLoaded;
         loader.load();
 
-        var tiles = [];
         $scope.tileFrames = ["A.png", "B.png", "C.png", "D.png", "E.png", "F.png", "G.png", "H.png", "I.png", "J.png", "K.png", "L.png", "M.png", "N.png", "O.png", "P.png", "Q.png", "R.png", "S.png", "T.png", "U.png", "V.png", "W.png", "X.png"];
-
-//        function onAssetsLoaded()
-//        {
-//            for (var row = 0; row < 6; row++)
-//            {
-//                for (var col = 0; col < 4; col++)
-//                {
-//                    var frameName = tileFrames[(row * 6) + col];
-//                    var tile = PIXI.Sprite.fromFrame(frameName);
-//                    tile.position.x = row * 175 + 87;
-//                    tile.position.y = col * 175 + 87;
-//                    tile.anchor.x = 0.5;
-//                    tile.anchor.y = 0.5;
-//                    tiles.push(tile);
-//                    stage.addChild(tile);
-//
-//                }
-//            }
-//        }
+        $scope.xOffset = 0;
+        $scope.yOffset = 0;
 
 
 
-//        stage.click = click;
-//        stage.touchstart = click;
-
-        var stageWidth = $scope.width;
-        var stageHeight = $scope.height;
-        var tileDim = 175;
-        var vertLines = stageWidth / tileDim;
-        var horLines = stageHeight / tileDim;
-        var graphics = new PIXI.Graphics();
-        graphics.beginFill(0xFFFFFF);
-        graphics.lineStyle(1, 0xFFFFFF, 1.0);
-        for (var i = 1; i <= vertLines; i++)
-        {
-            graphics.moveTo(i * tileDim, 0);
-            graphics.lineTo(i * tileDim, stageHeight);
-        }
-        for (var i = 1; i <= horLines; i++)
-        {
-            graphics.moveTo(0, i * tileDim);
-            graphics.lineTo(stageWidth, i * tileDim);
-        }
-        graphics.endFill();
-        stage.addChild(graphics);
+        $scope.board = new PIXI.DisplayObjectContainer();
+        stage.addChild($scope.board);
         refreshBoard();
+
+        $scope.stage.setInteractive(true);
+        $scope.boardOffset = {x: 0, y: 0};
+
+        var isDragging = false,
+                prevX, prevY;
+
+        $scope.stage.mousedown = function (moveData) {
+            var pos = moveData.global;
+            prevX = pos.x;
+            prevY = pos.y;
+            isDragging = true;
+        };
+
+        $scope.stage.mousemove = function (moveData) {
+            if (!isDragging) {
+                return;
+            }
+            var pos = moveData.global;
+            var dx = pos.x - prevX;
+            var dy = pos.y - prevY;
+
+            $scope.board.position.x += dx;
+            $scope.board.position.y += dy;
+            $scope.boardOffset.x += dx;
+            $scope.boardOffset.y += dy;
+            prevX = pos.x;
+            prevY = pos.y;
+        };
+
+        $scope.stage.mouseup = function (moveDate) {
+            isDragging = false;
+        };
+
+        $scope.stage.touchstart = $scope.board.mousedown;
+        $scope.stage.touchend = $scope.board.mouseup;
+        $scope.stage.touchmove = $scope.board.mousemove;
     }
 
 }

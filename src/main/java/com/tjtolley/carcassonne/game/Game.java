@@ -25,8 +25,9 @@ public class Game
     private final String gameName;
     private final UUID id;
 //    List<Player> players;
+    private final TileDeck deck;
 
-    public Game(String name, UUID id)//, List<Player> players)
+    public Game(String name, UUID id, TileDeck deck)//, List<Player> players)
     {
         this.map = HashBasedTable.create();
         this.gameName = name;
@@ -34,6 +35,7 @@ public class Game
 //        this.players = players;
         this.placedTiles = Lists.newArrayList();
         this.placeableLocations = Sets.newHashSet(new Position(0, 0));
+        this.deck = deck;
     }
 
     public String getName()
@@ -84,6 +86,10 @@ public class Game
     {
         return placeableLocations;
     }
-    
+
+    public TileDefinition getNextTile()
+    {
+        return this.deck.getNextTile();
+    }
 
 }

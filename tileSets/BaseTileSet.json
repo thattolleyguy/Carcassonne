@@ -1,0 +1,1139 @@
+[
+    {
+        "textureName": "A.png",
+        "count": 2,
+        "features": [
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NE",
+                    "N",
+                    "NW",
+                    "EN",
+                    "E",
+                    "ES",
+                    "SE",
+                    "SW",
+                    "WS",
+                    "W",
+                    "WN"
+                ],
+                "id": 0
+            },
+            {
+                "type": "CLOISTER",
+                "featurePositions": [
+                    "C"
+                ],
+                "featureConnections": [
+                    2
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "S"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 2
+            }
+
+        ]
+
+    },
+    {
+        "textureName": "B.png",
+        "count": 4,
+        "features": [
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NE",
+                    "N",
+                    "NW",
+                    "EN",
+                    "E",
+                    "ES",
+                    "SE",
+                    "S",
+                    "SW",
+                    "WS",
+                    "W",
+                    "WN"
+                ],
+                "id": 0
+            },
+            {
+                "type": "CLOISTER",
+                "id": 1,
+                "featurePositions": [
+                    "C"
+                ]
+            }
+        ]
+
+    },
+    {
+        "textureName": "C.png",
+        "count": 1,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NE",
+                    "N",
+                    "NW",
+                    "EN",
+                    "E",
+                    "ES",
+                    "SE",
+                    "SW",
+                    "WS",
+                    "W",
+                    "WN",
+                    "C"
+                ],
+                "id": 0,
+                "pennants": 1
+            }
+        ]
+
+    },
+    {
+        "textureName": "D.png",
+        "count": 4,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "EN",
+                    "E",
+                    "ES"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NE",
+                    "SE"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "N",
+                    "S",
+                    "C"
+                ],
+                "id": 2
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NW",
+                    "SW",
+                    "WS",
+                    "W",
+                    "WN"
+                ],
+                "id": 3
+            }
+        ]
+    },
+    {
+        "textureName": "E.png",
+        "count": 5,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "EN",
+                    "E",
+                    "ES",
+                    "SE",
+                    "S",
+                    "SW",
+                    "WS",
+                    "W",
+                    "WN",
+                    "C"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            }
+        ]
+    },
+    {
+        "textureName": "F.png",
+        "count": 2,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "WN",
+                    "W",
+                    "WS",
+                    "EN",
+                    "E",
+                    "ES",
+                    "C"
+                ],
+                "featureConnections": [
+                    1,
+                    2
+                ],
+                "id": 0,
+                "pennants": 1
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SW",
+                    "S",
+                    "SE"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 2
+            }
+        ]
+    },
+    {
+        "textureName": "G.png",
+        "count": 1,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "SW",
+                    "S",
+                    "SE",
+                    "C"
+                ],
+                "featureConnections": [
+                    1,
+                    2
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "WN",
+                    "W",
+                    "WS"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "ES",
+                    "E",
+                    "EN"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 2
+            }
+        ]
+    },
+    {
+        "textureName": "H.png",
+        "count": 3,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "WN",
+                    "W",
+                    "WS"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "SW",
+                    "S",
+                    "SE",
+                    "C"
+                ],
+                "featureConnections": [
+                    0,
+                    2
+                ],
+                "id": 1
+            },
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "EN",
+                    "E",
+                    "ES"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 2
+            }
+        ]
+    },
+    {
+        "textureName": "I.png",
+        "count": 2,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "SW",
+                    "S",
+                    "SE"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WN",
+                    "W",
+                    "WS",
+                    "C"
+                ],
+                "featureConnections": [
+                    0,
+                    2
+                ],
+                "id": 1
+            },
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "EN",
+                    "E",
+                    "ES"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 2
+            }
+        ]
+    },
+    {
+        "textureName": "J.png",
+        "count": 3,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "WN",
+                    "W",
+                    "WS",
+                    "EN"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "S",
+                    "E",
+                    "C"
+                ],
+                "id": 2
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE",
+                    "ES"
+                ],
+                "id": 3
+            }
+        ]
+    },
+    {
+        "textureName": "K.png",
+        "count": 3,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "EN",
+                    "E",
+                    "ES"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE",
+                    "S",
+                    "SW",
+                    "NE"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "N",
+                    "W",
+                    "C"
+                ],
+                "id": 2
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NW",
+                    "WN"
+                ],
+                "id": 3
+            }
+        ]
+    },
+    {
+        "textureName": "L.png",
+        "count": 3,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "EN",
+                    "E",
+                    "ES"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE",
+                    "NE"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "N"
+                ],
+                "featureConnections": [
+                    3,
+                    4
+                ],
+                "id": 2
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "W"
+                ],
+                "featureConnections": [
+                    2,
+                    4
+                ],
+                "id": 3
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "S"
+                ],
+                "featureConnections": [
+                    2,
+                    3
+                ],
+                "id": 4
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "NW",
+                    "WN"
+                ],
+                "id": 5
+            }
+            ,
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SW",
+                    "WS"
+                ],
+                "id": 6
+            }
+        ]
+    },
+    {
+        "textureName": "M.png",
+        "count": 2,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WS",
+                    "W",
+                    "WN"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0,
+                "pennants": 1
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "EN",
+                    "E",
+                    "ES",
+                    "SE",
+                    "S",
+                    "SW"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            }
+        ]
+    },
+    {
+        "textureName": "N.png",
+        "count": 2,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WS",
+                    "W",
+                    "WN"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "EN",
+                    "E",
+                    "ES",
+                    "SE",
+                    "S",
+                    "SW"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            }
+        ]
+    },
+    {
+        "textureName": "O.png",
+        "count": 2,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WS",
+                    "W",
+                    "WN"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0,
+                "pennants": 1
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "EN",
+                    "SW"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "S",
+                    "E",
+                    "C"
+                ],
+                "id": 2
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE",
+                    "ES"
+                ],
+                "id": 3
+            }
+        ]
+    },
+    {
+        "textureName": "P.png",
+        "count": 3,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WS",
+                    "W",
+                    "WN"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "EN",
+                    "SW"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "S",
+                    "E",
+                    "C"
+                ],
+                "id": 2
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE",
+                    "ES"
+                ],
+                "id": 3
+            }
+        ]
+    },
+    {
+        "textureName": "Q.png",
+        "count": 1,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WS",
+                    "W",
+                    "WN",
+                    "EN",
+                    "E",
+                    "ES",
+                    "C"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0,
+                "pennants": 1
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE",
+                    "S",
+                    "SW"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            }
+        ]
+    },
+    {
+        "textureName": "R.png",
+        "count": 3,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WS",
+                    "W",
+                    "WN",
+                    "EN",
+                    "E",
+                    "ES",
+                    "C"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE",
+                    "S",
+                    "SW"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            }
+        ]
+    },
+    {
+        "textureName": "S.png",
+        "count": 2,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WS",
+                    "W",
+                    "WN",
+                    "EN",
+                    "E",
+                    "ES",
+                    "C"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0,
+                "pennants": 1
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "S"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 2
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SW"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 3
+            }
+        ]
+    },
+    {
+        "textureName": "T.png",
+        "count": 1,
+        "features": [
+            {
+                "type": "CITY",
+                "featurePositions": [
+                    "NW",
+                    "N",
+                    "NE",
+                    "WS",
+                    "W",
+                    "WN",
+                    "EN",
+                    "E",
+                    "ES",
+                    "C"
+                ],
+                "featureConnections": [
+                    1
+                ],
+                "id": 0
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SE"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 1
+            },
+            {
+                "type": "ROAD",
+                "featurePositions": [
+                    "S"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 2
+            },
+            {
+                "type": "FARM",
+                "featurePositions": [
+                    "SW"
+                ],
+                "featureConnections": [
+                    0
+                ],
+                "id": 3
+            }
+        ]
+    },
+    {
+        "textureName": "U.png",
+        "count": 8,
+        "features": [
+            {
+                "type": "FARM",
+                "id": 0,
+                "featurePositions": [
+                    "NW",
+                    "WN",
+                    "W",
+                    "WS",
+                    "SW"
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 1,
+                "featurePositions": [
+                    "N",
+                    "C",
+                    "S"
+                ]
+            },
+            {
+                "type": "FARM",
+                "id": 2,
+                "featurePositions": [
+                    "NE",
+                    "EN",
+                    "E",
+                    "ES",
+                    "SE"
+                ]
+            }
+        ]
+    },
+    {
+        "textureName": "V.png",
+        "count": 9,
+        "features": [
+            {
+                "type": "FARM",
+                "id": 0,
+                "featurePositions": [
+                    "WN",
+                    "NW",
+                    "N",
+                    "NE",
+                    "EN",
+                    "E",
+                    "ES",
+                    "SE"
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 1,
+                "featurePositions": [
+                    "W",
+                    "S",
+                    "C"
+                ]
+            },
+            {
+                "type": "FARM",
+                "id": 2,
+                "featurePositions": [
+                    "WS",
+                    "SW"
+                ]
+            }
+        ]
+    },
+    {
+        "textureName": "W.png",
+        "count": 4,
+        "features": [
+            {
+                "type": "FARM",
+                "id": 0,
+                "featurePositions": [
+                    "WN",
+                    "NW",
+                    "N",
+                    "NE",
+                    "EN"
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 1,
+                "featurePositions": [
+                    "W"
+                ],
+                "featureConnections": [
+                    2,
+                    3
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 2,
+                "featurePositions": [
+                    "S"
+                ],
+                "featureConnections": [
+                    1,
+                    3
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 3,
+                "featurePositions": [
+                    "E"
+                ],
+                "featureConnections": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "type": "FARM",
+                "id": 4,
+                "featurePositions": [
+                    "WS",
+                    "SW"
+                ]
+            },
+            {
+                "type": "FARM",
+                "id": 5,
+                "featurePositions": [
+                    "ES",
+                    "SE"
+                ]
+            }
+        ]
+    },
+    {
+        "textureName": "X.png",
+        "count": 1,
+        "features": [
+            {
+                "type": "FARM",
+                "id": 0,
+                "featurePositions": [
+                    "NW",
+                    "WN"
+                ]
+            },
+            {
+                "type": "FARM",
+                "id": 1,
+                "featurePositions": [
+                    "NE",
+                    "EN"
+                ]
+            },
+            {
+                "type": "FARM",
+                "id": 2,
+                "featurePositions": [
+                    "SW",
+                    "WS"
+                ]
+            },
+            {
+                "type": "FARM",
+                "id": 3,
+                "featurePositions": [
+                    "SE",
+                    "ES"
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 4,
+                "featurePositions": [
+                    "N"
+                ],
+                "featureConnections": [
+                    5,
+                    6,
+                    7
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 5,
+                "featurePositions": [
+                    "E"
+                ],
+                "featureConnections": [
+                    4,
+                    6,
+                    7
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 6,
+                "featurePositions": [
+                    "S"
+                ],
+                "featureConnections": [
+                    4,
+                    5,
+                    7
+                ]
+            },
+            {
+                "type": "ROAD",
+                "id": 7,
+                "featurePositions": [
+                    "W"
+                ],
+                "featureConnections": [
+                    4,
+                    5,
+                    6
+                ]
+            }
+        ]
+    }
+]

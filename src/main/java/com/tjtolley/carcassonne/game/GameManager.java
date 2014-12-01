@@ -31,7 +31,7 @@ public class GameManager
     public UUID createGame(Map<String, Object> gameSettings)
     {
         UUID gameId = UUID.randomUUID();
-        gameMap.put(gameId, new Game((String) gameSettings.get("name"), gameId));
+        gameMap.put(gameId, new Game((String) gameSettings.get("name"), gameId, null));
         return gameId;
     }
 }
